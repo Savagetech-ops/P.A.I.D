@@ -74,9 +74,30 @@
     function viewDetails(name, desc, price, delivery, img) {
       const msg = `Product: ${name}\nDescription: ${desc}\nPrice: ${price}\nDelivery: ${delivery}\n\nTo order, click OK to chat with us on WhatsApp.`;
       if (confirm(msg)) {
+      showDeliveryAnimation();
         window.open(`https://wa.me/2349021335159?text=I%20want%20to%20order%20${encodeURIComponent(name)}%20for%20${encodeURIComponent(price)}`, '_blank');
       }
     }
   </script>
+
+<svg id="deliveryMan" width="80" height="80" viewBox="0 0 64 64" style="position:fixed; bottom:10px; right:10px; z-index:1000; display:none;">
+  <circle cx="32" cy="32" r="30" fill="#003366" />
+  <path d="M20 44 Q32 20 44 44" fill="#ffd700" />
+  <circle cx="32" cy="28" r="4" fill="#fff"/>
+</svg>
+<script>
+  function showDeliveryAnimation() {
+    const el = document.getElementById('deliveryMan');
+    el.style.display = 'block';
+    el.animate([
+      { transform: 'translateX(100vw)' },
+      { transform: 'translateX(-100%)' }
+    ], {
+      duration: 3000,
+      iterations: 1
+    });
+    setTimeout(() => { el.style.display = 'none'; }, 3000);
+  }
+</script>
 </body>
 </html>
