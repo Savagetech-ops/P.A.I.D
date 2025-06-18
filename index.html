@@ -1,7 +1,82 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>P.A.I.D. - Page 1</title></head>
-<body><h1>This is Page 1 (placeholder)</h1>
-<p><a href='page2.html'>Go to Page 2</a></p></body></html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>P.A.I.D. - Page 1</title>
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    body { font-family: Arial, sans-serif; background: #f0f8ff; margin: 0; padding: 20px; }
+    header { background-color: #003366; color: #ffd700; padding: 20px; text-align: center; animation: fadeInUp 1s ease-in; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+    .product { background: white; border: 1px solid #ccc; border-radius: 10px; padding: 15px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer; animation: fadeInUp 0.8s ease-in; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .product:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    .product img { width: 100%; max-height: 200px; object-fit: cover; border-radius: 5px; transition: transform 0.3s ease; }
+    .product:hover img { transform: scale(1.05); }
+    .product h3 { color: #003366; margin: 10px 0 5px; }
+    .product .desc { font-size: 0.9em; color: #555; }
+    .product .price { font-weight: bold; color: #003366; margin: 10px 0; }
+    .product .delivery { font-size: 0.8em; color: #999; margin-bottom: 10px; }
+    .buy-btn { padding: 10px; background-color: #003366; color: #ffd700; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
+    .buy-btn:hover { background-color: #002244; }
+    .pagination { text-align: center; margin-top: 20px; }
+    .pagination a { margin: 0 5px; text-decoration: none; color: #003366; font-weight: bold; transition: color 0.3s ease; }
+    .pagination a:hover { color: #ffd700; }
+    @media screen and (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>P.A.I.D. Online Store - Page 1</h1>
+    <p>Click any product to see account details: <strong>6141014882 (Opay)</strong></p>
+  </header>
+
+  <div class="product-grid">
+    <div class="product" onclick="viewDetails('Smart Watch', 'Fitness smart watch with Bluetooth.', '₦15,000', '1-2 days', 'https://i.imgur.com/rfT76In.jpg')">
+      <img src="https://i.imgur.com/rfT76In.jpg" alt="Smart Watch">
+      <h3>Smart Watch</h3>
+      <p class="desc">Fitness smart watch with Bluetooth.</p>
+      <p class="price">₦15,000</p>
+      <p class="delivery">Delivery: 1-2 days</p>
+      <button class="buy-btn">Order Now</button>
+    </div>
+
+    <div class="product" onclick="viewDetails('Gaming Headset', 'Noise-cancelling over-ear gaming headset.', '₦18,500', '2-4 days', 'https://i.imgur.com/4qOYJHw.jpg')">
+      <img src="https://i.imgur.com/4qOYJHw.jpg" alt="Gaming Headset">
+      <h3>Gaming Headset</h3>
+      <p class="desc">Noise-cancelling over-ear gaming headset.</p>
+      <p class="price">₦18,500</p>
+      <p class="delivery">Delivery: 2-4 days</p>
+      <button class="buy-btn">Order Now</button>
+    </div>
+
+    <div class="product" onclick="viewDetails('Bluetooth Speaker', 'Portable wireless speaker with bass boost.', '₦12,000', '1-3 days', 'https://i.imgur.com/K5GbRSw.jpg')">
+      <img src="https://i.imgur.com/K5GbRSw.jpg" alt="Bluetooth Speaker">
+      <h3>Bluetooth Speaker</h3>
+      <p class="desc">Portable wireless speaker with bass boost.</p>
+      <p class="price">₦12,000</p>
+      <p class="delivery">Delivery: 1-3 days</p>
+      <button class="buy-btn">Order Now</button>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <a href="index.html"><strong>1</strong></a>
+    <a href="page2.html">2</a>
+  </div>
+
+  <script>
+    function viewDetails(name, desc, price, delivery, img) {
+      const msg = `Product: ${name}\nDescription: ${desc}\nPrice: ${price}\nDelivery: ${delivery}\n\nTo order, click OK to chat with us on WhatsApp.`;
+      if (confirm(msg)) {
+        window.open(`https://wa.me/2349021335159?text=I%20want%20to%20order%20${encodeURIComponent(name)}%20for%20${encodeURIComponent(price)}`, '_blank');
+      }
+    }
+  </script>
+</body>
+</html>
