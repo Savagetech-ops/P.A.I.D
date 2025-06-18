@@ -123,3 +123,9 @@
   </div>
 </body>
 </html>
+<div class="product">
+  <img src="blob:null/600efda0-725c-4ec0-b7b9-11ded1969324" alt="Car/home pillow massager " />
+  <h3>Car/home pillow massager </h3>
+  <p>Back/neck massager </p>
+  <button class="buy-btn" onclick="buyNow('Car/home pillow massager ')">Buy Now</button>
+</div>
